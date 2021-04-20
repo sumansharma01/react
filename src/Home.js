@@ -36,21 +36,21 @@ const Home = () => {
     }
 
 
-    const [blogs,setBlogs]=useState([
-        {title:"first blog", author:"Suman Sharma", id:1},
-        {title:"Story of my life", author:"Pujan Chaulagain", id:2},
-        {title:"Living in Thailand", author:"Risu", id:3},
-        {title:"Life of a nepali student in Australia", author:"Riza", id:4},
-        {title:"How to act smart even when you are dumb", author:"Tekraj", id:5}
-    ])
+    const [blogs,setBlogs]=useState(null);
+    const [isLoading,setLoading]=useState(true);
 
     const handleDelete=(id)=>{
         setBlogs(blogs.filter((blog)=>{return blog.id!==id}));
     }
 
     useEffect(()=>{
-        console.log("USe of useEffect hook, runs on every render!");
-    },[name])
+        fetch(" http://localhost:8000/blogs")
+        .then(res=>{return res.json()})
+        .then(ress=>{setBlogs(ress);
+            setLoading(false);
+        })
+        .catch((err)=>console.log(err));
+    },[])
 
     return (  
         <div className="home">
@@ -63,11 +63,9 @@ const Home = () => {
 
             <p>{name}</p> */}
 
-
-            <BlogList blogs={blogs} title="All blogs" handleDelete={handleDelete}/>
-            <button onClick={useOfUseState} onDoubleClick={useOfUseStateChangeAgain}>Testing useState</button>
-
-            <p>{name}</p>
+            {isLoading && <div>Loading...</div>}
+            {blogs && <BlogList blogs={blogs} title="All blogs"/>}
+            
 
         </div>
     );
