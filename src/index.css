@@ -28,3 +28,16 @@
     font-weight: 900;
     color:red;
 }
+
+.blog-preview{
+    margin: 25px;
+}
+
+.blog-preview h1{
+    margin-bottom: 20px;
+    color:#f1356d;
+}
+
+.blog-preview:hover{
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
