@@ -33,6 +33,10 @@ const Home = () => {
         {title:"How to act smart even when you are dumb", author:"Tekraj", id:5}
     ])
 
+    const handleDelete=(id)=>{
+        setBlogs(blogs.filter((blog)=>{return blog.id!==id}));
+    }
+
     return (  
         <div className="home">
             {/* <h1>{title}</h1>
@@ -45,7 +49,7 @@ const Home = () => {
             <p>{name}</p> */}
 
 
-            <BlogList blogs={blogs} title="All blogs" />
+            <BlogList blogs={blogs} title="All blogs" handleDelete={handleDelete}/>
 
         </div>
     );
