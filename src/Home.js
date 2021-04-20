@@ -1,3 +1,4 @@
+import {useState} from 'react';
 const Home = () => {
     const title="Welcome to home";
     
@@ -14,12 +15,25 @@ const Home = () => {
         p.innerText=name;
         home.appendChild(p);
     }
+    const [name, setName] = useState("suman");
+    const useOfUseState=()=>{
+        setName("pujan");
+    }
+
+    const useOfUseStateChangeAgain=()=>{
+        setName("suman")
+    }
+
     return (  
         <div className="home">
             <h1>{title}</h1>
             <button onClick={randomGenerator}>Random</button>
 
             <button onClick={()=>passingArgument("Suman")}>Click</button>
+
+            <button onClick={useOfUseState} onDoubleClick={useOfUseStateChangeAgain}>Testing useState</button>
+
+            <p>{name}</p>
 
         </div>
     );
