@@ -1,5 +1,5 @@
 
-import './App.css';
+// import './App.css';
 import Navbar from './Navbar';
 import Home from './Home';
 
@@ -8,7 +8,9 @@ const App=()=>{
   return(
     <div className="App">
       <Navbar />
-      <div className="content">
+      <div className="content" style={{
+        marginTop: "50px"
+      }}>
         <Home />
       </div>
       
