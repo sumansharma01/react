@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import BlogList from './BlogList';
 const Home = () => {
     // const title="Welcome to home";
     
@@ -42,14 +43,9 @@ const Home = () => {
             <button onClick={useOfUseState} onDoubleClick={useOfUseStateChangeAgain}>Testing useState</button>
 
             <p>{name}</p> */}
-            {
-               blogs.map((blog)=>(
-                    <div className="blog-preview" key={blog.id}>
-                        <h1>{blog.title}</h1>
-                        <p>{blog.author}</p>
-                    </div>
-               ))
-            }
+
+
+            <BlogList blogs={blogs} title="All blogs" />
 
         </div>
     );
