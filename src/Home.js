@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import BlogList from './BlogList';
 const Home = () => {
     // const title="Welcome to home";
@@ -25,6 +25,17 @@ const Home = () => {
     //     setName("suman")
     // }
 
+
+    const [name, setName] = useState("suman");
+    const useOfUseState=()=>{
+        setName("pujan");
+    }
+
+    const useOfUseStateChangeAgain=()=>{
+        setName("suman")
+    }
+
+
     const [blogs,setBlogs]=useState([
         {title:"first blog", author:"Suman Sharma", id:1},
         {title:"Story of my life", author:"Pujan Chaulagain", id:2},
@@ -36,6 +47,10 @@ const Home = () => {
     const handleDelete=(id)=>{
         setBlogs(blogs.filter((blog)=>{return blog.id!==id}));
     }
+
+    useEffect(()=>{
+        console.log("USe of useEffect hook, runs on every render!");
+    },[name])
 
     return (  
         <div className="home">
@@ -50,6 +65,9 @@ const Home = () => {
 
 
             <BlogList blogs={blogs} title="All blogs" handleDelete={handleDelete}/>
+            <button onClick={useOfUseState} onDoubleClick={useOfUseStateChangeAgain}>Testing useState</button>
+
+            <p>{name}</p>
 
         </div>
     );
