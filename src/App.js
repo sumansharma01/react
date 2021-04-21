@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Create from './Create';
 
 const App=()=>{
-  const title="Welcome to my new blog";
+  // const title="Welcome to my new blog";
   return(
     <Router>
         <div className="App">
