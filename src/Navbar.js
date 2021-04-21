@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Navbar = () => {
     return ( 
         <nav className="navbar">
@@ -6,8 +8,8 @@ const Navbar = () => {
                 fontWeight:"900"
             }}>The Suman blog</h1>
             <div className="links">
-                <a href="/">Home</a>
-                <a href="/create">New Blog</a>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/create">New Blog</NavLink>
             </div>
         </nav>
      );
