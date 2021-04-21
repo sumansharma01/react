@@ -38,6 +38,7 @@ const Home = () => {
 
     const [blogs,setBlogs]=useState(null);
     const [isLoading,setLoading]=useState(true);
+    const [error,setError]=useState(null);
 
     const handleDelete=(id)=>{
         setBlogs(blogs.filter((blog)=>{return blog.id!==id}));
@@ -45,11 +46,19 @@ const Home = () => {
 
     useEffect(()=>{
         fetch(" http://localhost:8000/blogs")
-        .then(res=>{return res.json()})
+        .then(res=>{
+            if(!res.ok){
+                setLoading(false);
+                setBlogs(null);
+                throw Error('error in fetching blogs');
+                
+            }
+            return res.json()})
         .then(ress=>{setBlogs(ress);
+            setError(null);
             setLoading(false);
         })
-        .catch((err)=>console.log(err));
+        .catch((err)=>{setError(err.message)});
     },[])
 
     return (  
@@ -63,6 +72,7 @@ const Home = () => {
 
             <p>{name}</p> */}
 
+            {error && <div>{error}</div>}
             {isLoading && <div>Loading...</div>}
             {blogs && <BlogList blogs={blogs} title="All blogs"/>}
             
