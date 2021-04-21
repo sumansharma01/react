@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import BlogList from './BlogList';
+import useFetch from './useFetch';
 const Home = () => {
     // const title="Welcome to home";
     
@@ -26,41 +27,8 @@ const Home = () => {
     // }
 
 
-    const [name, setName] = useState("suman");
-    const useOfUseState=()=>{
-        setName("pujan");
-    }
-
-    const useOfUseStateChangeAgain=()=>{
-        setName("suman")
-    }
-
-
-    const [blogs,setBlogs]=useState(null);
-    const [isLoading,setLoading]=useState(true);
-    const [error,setError]=useState(null);
-
-    const handleDelete=(id)=>{
-        setBlogs(blogs.filter((blog)=>{return blog.id!==id}));
-    }
-
-    useEffect(()=>{
-        fetch(" http://localhost:8000/blogs")
-        .then(res=>{
-            if(!res.ok){
-                setLoading(false);
-                setBlogs(null);
-                throw Error('error in fetching blogs');
-                
-            }
-            return res.json()})
-        .then(ress=>{setBlogs(ress);
-            setError(null);
-            setLoading(false);
-        })
-        .catch((err)=>{setError(err.message)});
-    },[])
-
+     
+    const {data:blogs,isLoading,error}=useFetch("http://localhost:8000/blogs");
     return (  
         <div className="home">
             {/* <h1>{title}</h1>
