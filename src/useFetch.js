@@ -32,7 +32,7 @@ const useFetch = (url) => {
                     setError(err.message)};
                 }
                 
-            )},2000);
+            )},1000);
             
 
             //cleanup function
