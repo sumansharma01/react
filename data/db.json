@@ -1,11 +1,6 @@
 {
   "blogs": [
     {
-      "title": "first blog",
-      "author": "Suman Sharma",
-      "id": 1
-    },
-    {
       "title": "Story of my life",
       "author": "Pujan Chaulagain",
       "id": 2
@@ -14,21 +9,6 @@
       "title": "Living in Thailand",
       "author": "Risu",
       "id": 3
-    },
-    {
-      "title": "Life of a nepali student in Australia",
-      "author": "Riza",
-      "id": 4
-    },
-    {
-      "title": "abother blog",
-      "author": "suman",
-      "id": 5
-    },
-    {
-      "title": "useHistory in react",
-      "author": "pujan",
-      "id": 6
     }
   ]
 }
